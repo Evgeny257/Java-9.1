@@ -4,6 +4,15 @@ public class Radio {
 
     private int currentStationNumber;
     private int currentVolume;
+    private int amountOfStations;
+
+    public Radio(int amountOfStations) {
+        this.amountOfStations = amountOfStations;
+    }
+
+    public Radio() {
+        amountOfStations = 10;
+    }
 
     public void increaseVolume() {
         if (currentVolume != 100) {
@@ -20,7 +29,7 @@ public class Radio {
     }
 
     public void next() {
-        if (currentStationNumber != 9) {
+        if (currentStationNumber < amountOfStations - 1) {
             currentStationNumber = currentStationNumber + 1;
         } else {
             currentStationNumber = 0;
@@ -32,14 +41,16 @@ public class Radio {
         if (currentStationNumber != 0) {
             currentStationNumber = currentStationNumber - 1;
         } else {
-            currentStationNumber = 9;
+            currentStationNumber = amountOfStations - 1;
         }
 
     }
 
     public void setCurrentStationNumber(int stationNumber) {
-        if ((stationNumber >= 0) && (stationNumber <= 9)) {
+        if ((stationNumber >= 0) && (stationNumber <= amountOfStations - 1)) {
             currentStationNumber = stationNumber;
+        } else {
+            currentStationNumber = amountOfStations - 1;
         }
     }
 
